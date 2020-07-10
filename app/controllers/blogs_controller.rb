@@ -4,6 +4,8 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @blog = Blog.find(params[:id])
+    # パラメータ名idでfind
   end
 
   def new #投稿フォームを表示
@@ -13,7 +15,7 @@ class BlogsController < ApplicationController
   def create #newアクションで表示されたフォームでの投稿内容を保存
     blog = Blog.new(blog_params) #上の＠blogとは別の変数
     blog.save
-    redirect_to blogs_path #'/blogs'に遷移
+    redirect_to blog_path(blog.id) #'/blog/(id)'に遷移
   end
 
   def edit
