@@ -10,9 +10,9 @@ class BlogsController < ApplicationController
   end
 
   def create #newアクションで表示されたフォームでの投稿内容を保存
-    blog = Blog.new(blog_params)
+    blog = Blog.new(blog_params) #上の＠blogとは別の変数
     blog.save
-    redirect_to blogs_path
+    redirect_to blogs_path #'/blogs'に遷移
   end
 
   def edit
