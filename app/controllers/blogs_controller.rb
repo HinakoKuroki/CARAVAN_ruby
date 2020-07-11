@@ -18,7 +18,14 @@ class BlogsController < ApplicationController
     redirect_to blog_path(blog.id) #'/blog/(id)'に遷移
   end
 
-  def edit
+  def edit #編集画面を表示
+    @blog = Blog.find(params[:id])
+  end
+
+  def update #editアクションで編集したblogを保存
+    blog = Blog.find(params[:id])
+    blog.update(blog_params)
+    redirect_to blog_path(blog)
   end
 
   private
